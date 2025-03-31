@@ -106,9 +106,32 @@
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       <p>Github Actions でコメントを更新する方法として、
 <a href="https://github.com/marocchino/sticky-pull-request-comment">marocchino/sticky-pull-request-comment</a>を使う方法があります。
-が、Github CLI を使えば自前でできるのでそのメモ</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>:
-</span></span></code></pre></div>
+が、Github CLI を使えば自前でできるのでそのメモ
+（ちょっとめんどくさいけど）</p>
+<h3 id="仕組み">仕組み</h3>
+<ul>
+<li>update したいコメントに invisible な footer を仕込む</li>
+<li>仕込んだ footer を探す</li>
+<li>あれば更新</li>
+</ul>
+<p>みたいな感じです。</p>
+<p>雰囲気: <a href="https://github.com/freyja1103/ci-upsert-comment/pull/1">https://github.com/freyja1103/ci-upsert-comment/pull/1</a></p>
+<h4 id="コメントをさがす">コメントをさがす</h4>
+<p>gh api repos/repoName/issues/number/comments で JSON を拾いつつ、jq でいい感じにフィルタリングする</p>
+<ul>
+<li>select だけだと存在しない場合に空の配列が代入されるので<code>map() | first // &quot;&quot;</code>で空文字にする</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Find existing comment</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">id</span>: <span style="color:#ae81ff">existing_comment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        COMMENT_ID=$(gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments | jq -r --arg footer &#34;$FOOTER&#34; &#39;map(select(.body | contains($footer)) | .id) | first // &#34;&#34;&#39; | head -n1)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        if [[ -n &#34;$COMMENT_ID&#34; ]]; then
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;COMMENT_ID=$COMMENT_ID&#34; &gt;&gt; $GITHUB_ENV
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        fi</span>
+</span></span></code></pre></div><h3 id="コメントを更新する">コメントを更新する</h3>
+<p>空文字でなければ PATCH で更新</p>
     </div>
     <a href="/posts/actions-upsert-comment/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
