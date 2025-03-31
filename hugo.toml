@@ -1,4 +1,7 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://freyja1103.github.io/'
 languageCode = 'ja-JP'
 title = 'logwion'
 theme = 'ananke'
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
