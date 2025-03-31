@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on logwion</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://freyja1103.github.io/posts/</link>
     <description>Recent content in Posts on logwion</description>
     <generator>Hugo</generator>
     <language>ja-JP</language>
-    <lastBuildDate>Mon, 31 Mar 2025 19:17:43 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Mar 2025 19:38:48 +0900</lastBuildDate>
+    <atom:link href="https://freyja1103.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hugoを導入したメモ</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
-      <pubDate>Mon, 31 Mar 2025 19:17:43 +0900</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description>&lt;h2 id=&#34;hugo-の導入メモ&#34;&gt;Hugo の導入メモ&lt;/h2&gt;</description>
+      <title>Github Actions &#43; Github CLIでコメントを更新する</title>
+      <link>https://freyja1103.github.io/posts/actions-upsert-comment/</link>
+      <pubDate>Mon, 31 Mar 2025 19:38:48 +0900</pubDate>
+      <guid>https://freyja1103.github.io/posts/actions-upsert-comment/</guid>
+      <description>&lt;p&gt;Github Actions でコメントを更新する方法として、&#xA;&lt;a href=&#34;https://github.com/marocchino/sticky-pull-request-comment&#34;&gt;marocchino/sticky-pull-request-comment&lt;/a&gt;を使う方法があります。&#xA;が、Github CLI を使えば自前でできるのでそのメモ&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>

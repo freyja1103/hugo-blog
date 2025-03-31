@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>logwion</title>
-    <link>http://localhost:1313/</link>
+    <link>https://freyja1103.github.io/</link>
     <description>Recent content on logwion</description>
     <generator>Hugo</generator>
     <language>ja-JP</language>
-    <lastBuildDate>Mon, 31 Mar 2025 19:17:43 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Mar 2025 19:38:48 +0900</lastBuildDate>
+    <atom:link href="https://freyja1103.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hugoを導入したメモ</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
-      <pubDate>Mon, 31 Mar 2025 19:17:43 +0900</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description>&lt;p&gt;Hugo でブログ（ここ）を作ってみたのでメモ&lt;/p&gt;&#xA;&lt;h3 id=&#34;環境&#34;&gt;環境&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;WSL 2 (Ubuntu 24.04)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;導入&#34;&gt;導入&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://gohugo.io/installation/linux/&#34;&gt;ここ&lt;/a&gt;を参考にする&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;いつも通り apt で入れようとしたが、ドキュメントをよく見ると&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The Hugo version available in package repositories varies based on Linux distribution and release, and in some cases will not be the latest version.&lt;/p&gt;&#xA;&lt;p&gt;Use one of the other installation methods if your package repository does not provide the desired version.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;だった。&#xA;入れてみると、&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ apt list -a hugo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Listing... Done&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo/noble-updates,noble-security,now 0.123.7-1ubuntu0.2 amd64 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;installed&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo/noble 0.123.7-1build1 amd64&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;で古かったので、&lt;a href=&#34;https://github.com/gohugoio/hugo/releases&#34;&gt;Release&lt;/a&gt; から.deb を落とした。&lt;/p&gt;</description>
+      <title>Github Actions &#43; Github CLIでコメントを更新する</title>
+      <link>https://freyja1103.github.io/posts/actions-upsert-comment/</link>
+      <pubDate>Mon, 31 Mar 2025 19:38:48 +0900</pubDate>
+      <guid>https://freyja1103.github.io/posts/actions-upsert-comment/</guid>
+      <description>&lt;p&gt;Github Actions でコメントを更新する方法として、&#xA;&lt;a href=&#34;https://github.com/marocchino/sticky-pull-request-comment&#34;&gt;marocchino/sticky-pull-request-comment&lt;/a&gt;を使う方法があります。&#xA;が、Github CLI を使えば自前でできるのでそのメモ&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>

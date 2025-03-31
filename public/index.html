@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja-JP">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -11,12 +11,12 @@
     
     
     
-      <meta name="robots" content="noindex, nofollow">
+      <meta name="robots" content="index, follow">
     
     
 
     
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
+<link rel="stylesheet" href="/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
 
 
 
@@ -37,23 +37,25 @@
     
 
     
-      <link rel="canonical" href="http://localhost:1313/">
+      <link rel="canonical" href="https://freyja1103.github.io/">
     
 
-    <meta property="og:url" content="http://localhost:1313/">
+    <meta property="og:url" content="https://freyja1103.github.io/">
   <meta property="og:site_name" content="logwion">
   <meta property="og:title" content="logwion">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="logwion">
-  <meta itemprop="datePublished" content="2025-03-31T19:17:43+09:00">
-  <meta itemprop="dateModified" content="2025-03-31T19:17:43+09:00">
+  <meta itemprop="datePublished" content="2025-03-31T19:38:48+09:00">
+  <meta itemprop="dateModified" content="2025-03-31T19:38:48+09:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="logwion">
 
+      
+    
 	
-  </head><body class="ma0 avenir bg-near-white development">
+  </head><body class="ma0 avenir bg-near-white production">
 
     
 
@@ -113,33 +115,18 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/my-first-post/" class="color-inherit dim link">
-            Hugoを導入したメモ
+          <a href="/posts/actions-upsert-comment/" class="color-inherit dim link">
+            Github Actions &#43; Github CLIでコメントを更新する
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>Hugo でブログ（ここ）を作ってみたのでメモ</p>
-<h3 id="環境">環境</h3>
-<ul>
-<li>WSL 2 (Ubuntu 24.04)</li>
-</ul>
-<h2 id="導入">導入</h2>
-<ul>
-<li><a href="https://gohugo.io/installation/linux/">ここ</a>を参考にする</li>
-</ul>
-<p>いつも通り apt で入れようとしたが、ドキュメントをよく見ると</p>
-<blockquote>
-<p>The Hugo version available in package repositories varies based on Linux distribution and release, and in some cases will not be the latest version.</p>
-<p>Use one of the other installation methods if your package repository does not provide the desired version.</p></blockquote>
-<p>だった。
-入れてみると、</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ apt list -a hugo
-</span></span><span style="display:flex;"><span>Listing... Done
-</span></span><span style="display:flex;"><span>hugo/noble-updates,noble-security,now 0.123.7-1ubuntu0.2 amd64 <span style="color:#f92672">[</span>installed<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>hugo/noble 0.123.7-1build1 amd64
-</span></span></code></pre></div><p>で古かったので、<a href="https://github.com/gohugoio/hugo/releases">Release</a> から.deb を落とした。</p>
+          <p>Github Actions でコメントを更新する方法として、
+<a href="https://github.com/marocchino/sticky-pull-request-comment">marocchino/sticky-pull-request-comment</a>を使う方法があります。
+が、Github CLI を使えば自前でできるのでそのメモ</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>:
+</span></span></code></pre></div>
         </div>
-        <a href="/posts/my-first-post/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        <a href="/posts/actions-upsert-comment/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>
@@ -157,7 +144,7 @@
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://freyja1103.github.io/" >
     &copy;  logwion 2025 
   </a>
     <div><div class="ananke-socials"></div>
