@@ -20,7 +20,7 @@ Github Actions でコメントを更新する方法として、
 
 #### コメントをさがす
 
-gh api repos/repoName/issues/number/comments で JSON を拾いつつ、jq でいい感じにフィルタリングする
+gh api repos/repoName/issues/number/comments で JSON を拾いつつ、コメント ID を抽出するために jq でいい感じにフィルタリングする
 
 - select だけだと存在しない場合に空の配列が代入されるので`map() | first // ""`で空文字にする
 
@@ -38,7 +38,7 @@ gh api repos/repoName/issues/number/comments で JSON を拾いつつ、jq で�
 
 ### コメントを更新する
 
-空文字でなければ PATCH で更新
+コメント ID があれば PATCH で更新
 
 ```yaml
 - name: Update existing comment

@@ -19,7 +19,7 @@ update したいコメントに invisible な footer を仕込む
 みたいな感じです。
 雰囲気: https://github.com/freyja1103/ci-upsert-comment/pull/1
 コメントをさがす
-gh api repos/repoName/issues/number/comments で JSON を拾いつつ、jq でいい感じにフィルタリングする
+gh api repos/repoName/issues/number/comments で JSON を拾いつつ、コメント ID を抽出するために jq でいい感じにフィルタリングする
 
 select だけだと存在しない場合に空の配列が代入されるのでmap() | first // &quot;&quot;で空文字にする
 
@@ -33,7 +33,7 @@ select だけだと存在しない場合に空の配列が代入されるのでm
         echo &#34;COMMENT_ID=$COMMENT_ID&#34; &gt;&gt; $GITHUB_ENV
         fi
 コメントを更新する
-空文字でなければ PATCH で更新">
+コメント ID があれば PATCH で更新">
     <meta name="generator" content="Hugo 0.145.0">
     
     
@@ -68,8 +68,8 @@ select だけだと存在しない場合に空の配列が代入されるのでm
   <meta property="og:description" content="Github Actions でコメントを更新する方法として、 marocchino/sticky-pull-request-commentを使う方法があります。 が、Github CLI を使えば自前でできるのでそのメモ （ちょっとめんどくさいけど）
 仕組み update したいコメントに invisible な footer を仕込む 仕込んだ footer を探す あれば更新 みたいな感じです。
 雰囲気: https://github.com/freyja1103/ci-upsert-comment/pull/1
-コメントをさがす gh api repos/repoName/issues/number/comments で JSON を拾いつつ、jq でいい感じにフィルタリングする
-select だけだと存在しない場合に空の配列が代入されるのでmap() | first // &#34;&#34;で空文字にする - name: Find existing comment id: existing_comment run: | COMMENT_ID=$(gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments | jq -r --arg footer &#34;$FOOTER&#34; &#39;map(select(.body | contains($footer)) | .id) | first // &#34;&#34;&#39; | head -n1) if [[ -n &#34;$COMMENT_ID&#34; ]]; then echo &#34;COMMENT_ID=$COMMENT_ID&#34; &gt;&gt; $GITHUB_ENV fi コメントを更新する 空文字でなければ PATCH で更新">
+コメントをさがす gh api repos/repoName/issues/number/comments で JSON を拾いつつ、コメント ID を抽出するために jq でいい感じにフィルタリングする
+select だけだと存在しない場合に空の配列が代入されるのでmap() | first // &#34;&#34;で空文字にする - name: Find existing comment id: existing_comment run: | COMMENT_ID=$(gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments | jq -r --arg footer &#34;$FOOTER&#34; &#39;map(select(.body | contains($footer)) | .id) | first // &#34;&#34;&#39; | head -n1) if [[ -n &#34;$COMMENT_ID&#34; ]]; then echo &#34;COMMENT_ID=$COMMENT_ID&#34; &gt;&gt; $GITHUB_ENV fi コメントを更新する コメント ID があれば PATCH で更新">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -80,18 +80,18 @@ select だけだと存在しない場合に空の配列が代入されるのでm
   <meta itemprop="description" content="Github Actions でコメントを更新する方法として、 marocchino/sticky-pull-request-commentを使う方法があります。 が、Github CLI を使えば自前でできるのでそのメモ （ちょっとめんどくさいけど）
 仕組み update したいコメントに invisible な footer を仕込む 仕込んだ footer を探す あれば更新 みたいな感じです。
 雰囲気: https://github.com/freyja1103/ci-upsert-comment/pull/1
-コメントをさがす gh api repos/repoName/issues/number/comments で JSON を拾いつつ、jq でいい感じにフィルタリングする
-select だけだと存在しない場合に空の配列が代入されるのでmap() | first // &#34;&#34;で空文字にする - name: Find existing comment id: existing_comment run: | COMMENT_ID=$(gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments | jq -r --arg footer &#34;$FOOTER&#34; &#39;map(select(.body | contains($footer)) | .id) | first // &#34;&#34;&#39; | head -n1) if [[ -n &#34;$COMMENT_ID&#34; ]]; then echo &#34;COMMENT_ID=$COMMENT_ID&#34; &gt;&gt; $GITHUB_ENV fi コメントを更新する 空文字でなければ PATCH で更新">
+コメントをさがす gh api repos/repoName/issues/number/comments で JSON を拾いつつ、コメント ID を抽出するために jq でいい感じにフィルタリングする
+select だけだと存在しない場合に空の配列が代入されるのでmap() | first // &#34;&#34;で空文字にする - name: Find existing comment id: existing_comment run: | COMMENT_ID=$(gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments | jq -r --arg footer &#34;$FOOTER&#34; &#39;map(select(.body | contains($footer)) | .id) | first // &#34;&#34;&#39; | head -n1) if [[ -n &#34;$COMMENT_ID&#34; ]]; then echo &#34;COMMENT_ID=$COMMENT_ID&#34; &gt;&gt; $GITHUB_ENV fi コメントを更新する コメント ID があれば PATCH で更新">
   <meta itemprop="datePublished" content="2025-03-31T19:38:48+09:00">
   <meta itemprop="dateModified" content="2025-03-31T19:38:48+09:00">
-  <meta itemprop="wordCount" content="136">
+  <meta itemprop="wordCount" content="141">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Github Actions &#43; Github CLIでコメントを更新する">
   <meta name="twitter:description" content="Github Actions でコメントを更新する方法として、 marocchino/sticky-pull-request-commentを使う方法があります。 が、Github CLI を使えば自前でできるのでそのメモ （ちょっとめんどくさいけど）
 仕組み update したいコメントに invisible な footer を仕込む 仕込んだ footer を探す あれば更新 みたいな感じです。
 雰囲気: https://github.com/freyja1103/ci-upsert-comment/pull/1
-コメントをさがす gh api repos/repoName/issues/number/comments で JSON を拾いつつ、jq でいい感じにフィルタリングする
-select だけだと存在しない場合に空の配列が代入されるのでmap() | first // &#34;&#34;で空文字にする - name: Find existing comment id: existing_comment run: | COMMENT_ID=$(gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments | jq -r --arg footer &#34;$FOOTER&#34; &#39;map(select(.body | contains($footer)) | .id) | first // &#34;&#34;&#39; | head -n1) if [[ -n &#34;$COMMENT_ID&#34; ]]; then echo &#34;COMMENT_ID=$COMMENT_ID&#34; &gt;&gt; $GITHUB_ENV fi コメントを更新する 空文字でなければ PATCH で更新">
+コメントをさがす gh api repos/repoName/issues/number/comments で JSON を拾いつつ、コメント ID を抽出するために jq でいい感じにフィルタリングする
+select だけだと存在しない場合に空の配列が代入されるのでmap() | first // &#34;&#34;で空文字にする - name: Find existing comment id: existing_comment run: | COMMENT_ID=$(gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments | jq -r --arg footer &#34;$FOOTER&#34; &#39;map(select(.body | contains($footer)) | .id) | first // &#34;&#34;&#39; | head -n1) if [[ -n &#34;$COMMENT_ID&#34; ]]; then echo &#34;COMMENT_ID=$COMMENT_ID&#34; &gt;&gt; $GITHUB_ENV fi コメントを更新する コメント ID があれば PATCH で更新">
 
       
     
@@ -159,7 +159,7 @@ select だけだと存在しない場合に空の配列が代入されるのでm
 <p>みたいな感じです。</p>
 <p>雰囲気: <a href="https://github.com/freyja1103/ci-upsert-comment/pull/1">https://github.com/freyja1103/ci-upsert-comment/pull/1</a></p>
 <h4 id="コメントをさがす">コメントをさがす</h4>
-<p>gh api repos/repoName/issues/number/comments で JSON を拾いつつ、jq でいい感じにフィルタリングする</p>
+<p>gh api repos/repoName/issues/number/comments で JSON を拾いつつ、コメント ID を抽出するために jq でいい感じにフィルタリングする</p>
 <ul>
 <li>select だけだと存在しない場合に空の配列が代入されるので<code>map() | first // &quot;&quot;</code>で空文字にする</li>
 </ul>
@@ -173,7 +173,7 @@ select だけだと存在しない場合に空の配列が代入されるのでm
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        echo &#34;COMMENT_ID=$COMMENT_ID&#34; &gt;&gt; $GITHUB_ENV
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        fi</span>
 </span></span></code></pre></div><h3 id="コメントを更新する">コメントを更新する</h3>
-<p>空文字でなければ PATCH で更新</p>
+<p>コメント ID があれば PATCH で更新</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Update existing comment</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">if</span>: <span style="color:#ae81ff">env.COMMENT_ID != &#39;&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
