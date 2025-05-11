@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Posts">
-  <meta itemprop="datePublished" content="2025-04-15T17:55:55+09:00">
-  <meta itemprop="dateModified" content="2025-04-15T17:55:55+09:00">
+  <meta itemprop="datePublished" content="2025-05-11T18:52:32+09:00">
+  <meta itemprop="dateModified" content="2025-05-11T18:52:32+09:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Posts">
 
@@ -93,6 +93,53 @@
   <article class="pa3 pa4-ns nested-copy-line-height">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></section>
     <section class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/nginx-virtual-host/" class="link black dim">
+        Nginxでバーチャルホストしてみる
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Nginx でバーチャルホストしてみたときのメモ。</p>
+<h2 id="nginx-の設定ファイル">Nginx の設定ファイル</h2>
+<p>server_name に追加するドメインをかく</p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">server {
+        listen 80;
+        server_name hoge.example.com;
+
+        root /var/www/hoge;
+        index index.html index.htm;
+
+        access_log /var/log/nginx/hoge.access.log;
+        error_log /var/log/nginx/hoge.error.log;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+</code></pre><p>シンボリックリンクをおいてリロード</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ln -s /etc/nginx/sites-available/hoge.example.com /etc/nginx/sites-enabled/
+</span></span><span style="display:flex;"><span>sudo systemctl reload nginx
+</span></span></code></pre></div><h2 id="ほか">ほか</h2>
+<ul>
+<li>DNS の設定しておく</li>
+<li>FW で弾いているなら許可しておく（これ忘れてめっちゃ沼った</li>
+<li>割り当て先の root ディレクトリを<code>/home/hoge/www/</code>みたいにしたときに<code>setfacl</code>で www-data にも権限与えられるかと思いきやうまくいかなかった
+<ul>
+<li>usermod でグループに追加してしまったほうが良い？わからん</li>
+</ul>
+</li>
+</ul>
+    </div>
+    <a href="/posts/nginx-virtual-host/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
           <div class="w-100 mb4 nested-copy-line-height relative bg-white">

@@ -6,8 +6,15 @@
     <description>Recent content in Posts on logwion</description>
     <generator>Hugo</generator>
     <language>ja-JP</language>
-    <lastBuildDate>Tue, 15 Apr 2025 17:55:55 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 11 May 2025 18:52:32 +0900</lastBuildDate>
     <atom:link href="https://freyja1103.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginxでバーチャルホストしてみる</title>
+      <link>https://freyja1103.github.io/posts/nginx-virtual-host/</link>
+      <pubDate>Sun, 11 May 2025 18:52:32 +0900</pubDate>
+      <guid>https://freyja1103.github.io/posts/nginx-virtual-host/</guid>
+      <description>&lt;p&gt;Nginx でバーチャルホストしてみたときのメモ。&lt;/p&gt;&#xA;&lt;h2 id=&#34;nginx-の設定ファイル&#34;&gt;Nginx の設定ファイル&lt;/h2&gt;&#xA;&lt;p&gt;server_name に追加するドメインをかく&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;server {&#xA;        listen 80;&#xA;        server_name hoge.example.com;&#xA;&#xA;        root /var/www/hoge;&#xA;        index index.html index.htm;&#xA;&#xA;        access_log /var/log/nginx/hoge.access.log;&#xA;        error_log /var/log/nginx/hoge.error.log;&#xA;&#xA;        location / {&#xA;                try_files $uri $uri/ =404;&#xA;        }&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;シンボリックリンクをおいてリロード&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ln -s /etc/nginx/sites-available/hoge.example.com /etc/nginx/sites-enabled/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl reload nginx&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;ほか&#34;&gt;ほか&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;DNS の設定しておく&lt;/li&gt;&#xA;&lt;li&gt;FW で弾いているなら許可しておく（これ忘れてめっちゃ沼った&lt;/li&gt;&#xA;&lt;li&gt;割り当て先の root ディレクトリを&lt;code&gt;/home/hoge/www/&lt;/code&gt;みたいにしたときに&lt;code&gt;setfacl&lt;/code&gt;で www-data にも権限与えられるかと思いきやうまくいかなかった&#xA;&lt;ul&gt;&#xA;&lt;li&gt;usermod でグループに追加してしまったほうが良い？わからん&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Github ActionsでPull Requestを自動作成した初回はpull_requestイベントは起きない</title>
       <link>https://freyja1103.github.io/posts/actions-auto-pr-spec/</link>

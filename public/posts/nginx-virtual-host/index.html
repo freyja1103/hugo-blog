@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Nginxでバーチャルホストしてみる | logwion</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Nginx でバーチャルホストしてみたときのメモ。
+Nginx の設定ファイル
+server_name に追加するドメインをかく
+server {
+        listen 80;
+        server_name hoge.example.com;
+
+        root /var/www/hoge;
+        index index.html index.htm;
+
+        access_log /var/log/nginx/hoge.access.log;
+        error_log /var/log/nginx/hoge.error.log;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+シンボリックリンクをおいてリロード
+ln -s /etc/nginx/sites-available/hoge.example.com /etc/nginx/sites-enabled/
+sudo systemctl reload nginx
+ほか
+
+DNS の設定しておく
+FW で弾いているなら許可しておく（これ忘れてめっちゃ沼った
+割り当て先の root ディレクトリを/home/hoge/www/みたいにしたときにsetfaclで www-data にも権限与えられるかと思いきやうまくいかなかった
+
+usermod でグループに追加してしまったほうが良い？わからん
+
+
+">
+    <meta name="generator" content="Hugo 0.145.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://freyja1103.github.io/posts/nginx-virtual-host/">
+    
+
+    <meta property="og:url" content="https://freyja1103.github.io/posts/nginx-virtual-host/">
+  <meta property="og:site_name" content="logwion">
+  <meta property="og:title" content="Nginxでバーチャルホストしてみる">
+  <meta property="og:description" content="Nginx でバーチャルホストしてみたときのメモ。
+Nginx の設定ファイル server_name に追加するドメインをかく
+server { listen 80; server_name hoge.example.com; root /var/www/hoge; index index.html index.htm; access_log /var/log/nginx/hoge.access.log; error_log /var/log/nginx/hoge.error.log; location / { try_files $uri $uri/ =404; } } シンボリックリンクをおいてリロード
+ln -s /etc/nginx/sites-available/hoge.example.com /etc/nginx/sites-enabled/ sudo systemctl reload nginx ほか DNS の設定しておく FW で弾いているなら許可しておく（これ忘れてめっちゃ沼った 割り当て先の root ディレクトリを/home/hoge/www/みたいにしたときにsetfaclで www-data にも権限与えられるかと思いきやうまくいかなかった usermod でグループに追加してしまったほうが良い？わからん">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-11T18:52:32+09:00">
+    <meta property="article:modified_time" content="2025-05-11T18:52:32+09:00">
+
+  <meta itemprop="name" content="Nginxでバーチャルホストしてみる">
+  <meta itemprop="description" content="Nginx でバーチャルホストしてみたときのメモ。
+Nginx の設定ファイル server_name に追加するドメインをかく
+server { listen 80; server_name hoge.example.com; root /var/www/hoge; index index.html index.htm; access_log /var/log/nginx/hoge.access.log; error_log /var/log/nginx/hoge.error.log; location / { try_files $uri $uri/ =404; } } シンボリックリンクをおいてリロード
+ln -s /etc/nginx/sites-available/hoge.example.com /etc/nginx/sites-enabled/ sudo systemctl reload nginx ほか DNS の設定しておく FW で弾いているなら許可しておく（これ忘れてめっちゃ沼った 割り当て先の root ディレクトリを/home/hoge/www/みたいにしたときにsetfaclで www-data にも権限与えられるかと思いきやうまくいかなかった usermod でグループに追加してしまったほうが良い？わからん">
+  <meta itemprop="datePublished" content="2025-05-11T18:52:32+09:00">
+  <meta itemprop="dateModified" content="2025-05-11T18:52:32+09:00">
+  <meta itemprop="wordCount" content="51">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nginxでバーチャルホストしてみる">
+  <meta name="twitter:description" content="Nginx でバーチャルホストしてみたときのメモ。
+Nginx の設定ファイル server_name に追加するドメインをかく
+server { listen 80; server_name hoge.example.com; root /var/www/hoge; index index.html index.htm; access_log /var/log/nginx/hoge.access.log; error_log /var/log/nginx/hoge.error.log; location / { try_files $uri $uri/ =404; } } シンボリックリンクをおいてリロード
+ln -s /etc/nginx/sites-available/hoge.example.com /etc/nginx/sites-enabled/ sudo systemctl reload nginx ほか DNS の設定しておく FW で弾いているなら許可しておく（これ忘れてめっちゃ沼った 割り当て先の root ディレクトリを/home/hoge/www/みたいにしたときにsetfaclで www-data にも権限与えられるかと思いきやうまくいかなかった usermod でグループに追加してしまったほうが良い？わからん">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        logwion
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Nginxでバーチャルホストしてみる</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-05-11T18:52:32+09:00">May 11, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Nginx でバーチャルホストしてみたときのメモ。</p>
+<h2 id="nginx-の設定ファイル">Nginx の設定ファイル</h2>
+<p>server_name に追加するドメインをかく</p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">server {
+        listen 80;
+        server_name hoge.example.com;
+
+        root /var/www/hoge;
+        index index.html index.htm;
+
+        access_log /var/log/nginx/hoge.access.log;
+        error_log /var/log/nginx/hoge.error.log;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+</code></pre><p>シンボリックリンクをおいてリロード</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ln -s /etc/nginx/sites-available/hoge.example.com /etc/nginx/sites-enabled/
+</span></span><span style="display:flex;"><span>sudo systemctl reload nginx
+</span></span></code></pre></div><h2 id="ほか">ほか</h2>
+<ul>
+<li>DNS の設定しておく</li>
+<li>FW で弾いているなら許可しておく（これ忘れてめっちゃ沼った</li>
+<li>割り当て先の root ディレクトリを<code>/home/hoge/www/</code>みたいにしたときに<code>setfacl</code>で www-data にも権限与えられるかと思いきやうまくいかなかった
+<ul>
+<li>usermod でグループに追加してしまったほうが良い？わからん</li>
+</ul>
+</li>
+</ul>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://freyja1103.github.io/" >
+    &copy;  logwion 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
